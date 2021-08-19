@@ -13,5 +13,13 @@
     </li>
   <% end %>
 </ul>
-<%= link_to "Add a new bookmark", new_list_bookmark_path(@list) %> <br>
+<hr>
+<%= link_to "Add a new bookmark" %> <br>
+<h3>New bookmark</h3>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.association :movie, as: :select %>
+  <%= f.input :comment %>
+  <%= f.submit %>
+<% end %>
+<hr>
 <%= link_to "Go back to the list", lists_path %>
