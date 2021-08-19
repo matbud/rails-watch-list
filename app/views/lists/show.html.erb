@@ -1,18 +1,20 @@
 <h1><%= @list.name %></h1>
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <strong>
-        <%= bookmark.movie.title %>
-      </strong>
-      <br>
-      <%= bookmark.comment %>
+<% @list.bookmarks.each do |bookmark| %>
+  <div class="card-movie">
+    <%= image_tag bookmark.movie.poster_url, alt: "Le Wagon", width: 200 %>
+    <div class="card-movie-info">
+      <div class="card-movie-header">
+        <h2><%= bookmark.movie.title %></h2>
+        <h2 class="card-movie-rating"> • <%= bookmark.movie.rating %> <i class="fas fa-star"></i></h2>
+      </div>
+      <p><%= bookmark.movie.overview %></p>
+      <h2><i class="fas fa-quote-left"></i>   <%= bookmark.comment %></h2>
       <%= link_to bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure" } do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </div>
+  </div>
+<% end %>
 <hr>
 <%= link_to "Add a new bookmark" %> <br>
 <h3>New bookmark</h3>
