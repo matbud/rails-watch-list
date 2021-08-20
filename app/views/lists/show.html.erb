@@ -31,17 +31,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <h3>New bookmark</h3>
-        <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <div class="modal-body">
+          <h3>New bookmark</h3>
           <%= f.association :movie, as: :select %>
           <%= f.input :comment %>
-          <%= f.submit %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
