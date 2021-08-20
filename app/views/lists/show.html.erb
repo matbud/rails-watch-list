@@ -1,4 +1,7 @@
 <h1><%= @list.name %></h1>
+<% if @list.photo.attached? %>
+  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <% @list.bookmarks.each do |bookmark| %>
   <div class="card-movie">
     <%= image_tag bookmark.movie.poster_url, alt: "Le Wagon", width: 200 %>
@@ -24,4 +27,4 @@
   <%= f.submit %>
 <% end %>
 <hr>
-<%= link_to "Go back to the list", lists_path %>
+<%= link_to "Go back to the list", root_path %>
